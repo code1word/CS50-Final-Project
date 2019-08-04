@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 100%; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<h1><b>{{username}}'s Courses</b></h1>
+<hr>
+<div class="row">
+  <div class="column">
+    <h3><b>Trimester 1</b></h3>
+    <p>
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>M.P.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for i in trif %}
+                        <tr>
+                            <td>{{ i.course_name }}</td>
+                            <td>{{ i.meeting_pattern }}</td>
+                        </tr>
+                        {% endfor %}
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td id="tri1gpa">
+                            <b>Max GPA: {{ avg1 }}</b>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+    </p>
+  </div>
+  <div class="column">
+    <h3><b>Trimester 2</b></h3>
+    <p>
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>M.P.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for i in tris %}
+                        <tr>
+                            <td>{{ i.course_name }}</td>
+                            <td>{{ i.meeting_pattern }}</td>
+                        </tr>
+                        {% endfor %}
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td id="tri2gpa">
+                            <b>Max GPA: {{ avg2 }}</b>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+    </p>
+  </div>
+  <div class="column">
+    <h3><b>Trimester 3</b></h3>
+    <p>
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>M.P.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for i in trit %}
+                        <tr>
+                            <td>{{ i.course_name }}</td>
+                            <td>{{ i.meeting_pattern }}</td>
+                        </tr>
+                        {% endfor %}
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td id="tri3gpa">
+                            <b>Max GPA: {{ avg3 }}</b>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+    </p>
+  </div>
+</div>
+<p>
+    <h5 align="right">
+        <b>Max Cumulative GPA: {{ cumgpa }}</b>
+    </h5>
+</p>
+
+
+{% endblock %}

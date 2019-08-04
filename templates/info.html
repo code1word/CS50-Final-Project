@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Course Information
+{% endblock %}
+
+{% block main %}
+    <h2>
+        <p>
+            Enter a course's name and select your desired meeting pattern to add it to your list of classes.
+        </p>
+    </h2>
+    <hr>
+    <form action="/info" method="post">
+        <div class="form-group">
+            <select class="form-control" name="user_selected_course" id="dropdown">
+                <option disabled="" selected="" value=""></option>
+                    {% for each_row in courses %}
+                    <option value="{{ each_row.course_name }}" align="left">{{ each_row.course_name }}</option>
+                    {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <div class="form-group" align="left">
+
+        <p>
+            <table class="table table-hover" id="table">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Course Code</th>
+                        <th>Meeting Pattern</th>
+                        <th>Trimester Offered</th>
+                        <th>GPA Weight</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for i in displayed_courses %}
+                        <tr>
+                            <td>{{ i.course_name }}</td>
+                            <td>{{ i.course_code }}</td>
+                            <td>{{ i.meeting_pattern }}</td>
+                            <td>{{ i.trimester_offered }}</td>
+                            <td>{{ i.gpa_weight }}</td>
+                        </tr>
+                        {% endfor %}
+
+                </tbody>
+            </table>
+        </p>
+    </div>
+    <form action="/submit_meeting_pattern" method="post">
+        <input type="text" name="second_input" value = '' id="selected_meeting_pattern" size="60" readonly>
+        <input class="btn btn-primary" type="submit" value="Submit" id="meeting_pattern_button">
+
+    </form>
+
+
+    <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="//rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.js"></script>
+    <link href="//rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.css" rel="stylesheet">
+    <script type="text/javascript">
+
+
+
+        $('#dropdown').editableSelect({ effects: 'default' });
+
+        var table = document.getElementById("table");
+
+        for(var i = 1; i < table.rows.length; i++)
+        {
+            table.rows[i].onclick = function()
+            {
+                document.getElementById("selected_meeting_pattern").value = (this.cells[0].innerHTML + ", " + this.cells[1].innerHTML + ", " + this.cells[2].innerHTML + ", " + this.cells[3].innerHTML + ", " + this.cells[4].innerHTML);
+            };
+        }
+
+
+    </script>
+
+
+{% endblock %}
+

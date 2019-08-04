@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete
+{% endblock %}
+
+{% block main %}
+    <h2>
+        <p>
+            Click on a class's row to delete it.
+        </p>
+    </h2>
+    <hr>
+    <div class="form-group" align="left">
+
+        <p>
+            <table class="table table-hover" id="table2">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Course Code</th>
+                        <th>Meeting Pattern</th>
+                        <th>Trimester Offered</th>
+                        <th>GPA Weight</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for i in displayed_courses %}
+                        <tr>
+                            <td>{{ i.course_name }}</td>
+                            <td>{{ i.course_code }}</td>
+                            <td>{{ i.meeting_pattern }}</td>
+                            <td>{{ i.trimester_offered }}</td>
+                            <td>{{ i.gpa_weight }}</td>
+                        </tr>
+                        {% endfor %}
+
+                </tbody>
+            </table>
+        </p>
+    </div>
+    <form action="/delete_classes" method="post">
+        <input type="text" name="third_input" value = '' id="selected_delete_class" size="60" readonly>
+        <input class="btn btn-primary" type="submit" value="Delete" id="meeting_pattern_button">
+        <input class="btn btn-primary" type="submit" value="Delete All" formaction="/delete_all_classes" style="float: right;">
+
+    </form>
+
+
+    <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="//rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.js"></script>
+    <link href="//rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.css" rel="stylesheet">
+    <script type="text/javascript">
+
+        var table = document.getElementById("table2");
+
+            for(var i = 1; i < table.rows.length; i++)
+            {
+
+                table.rows[i].onclick = function()
+                {
+                    document.getElementById("selected_delete_class").value = (this.cells[0].innerHTML + ", " + this.cells[1].innerHTML + ", " + this.cells[2].innerHTML + ", " + this.cells[3].innerHTML + ", " + this.cells[4].innerHTML);
+                };
+
+            }
+
+
+
+
+
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post">
+        <div class="form-group" style="margin-top: 60px;">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+        <br>
+        <br>
+        <p>
+            <a href="/register">Don't have an account? Register here.</a>
+        </p>
+    </form>
+    <footer class="small text-center text-muted">
+        <p style="position: fixed;bottom: 0; left: 0; right:0">
+            By: Dhruv Yalamanchi, CS50x Final Project 2019
+        </p>
+    </footer>
+
+
+{% endblock %}

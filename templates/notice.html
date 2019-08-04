@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Notice
+{% endblock %}
+
+{% block main %}
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+      height: 100%; /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+    <div align="left">
+        <h1>
+            <p>
+                <b>Note: </b>This version of Schmaker does not account for conflicting meeting patterns if one or more of the following courses are present in your schedule for a given trimester:
+            </p>
+        </h1>
+    </div>
+    <div class="row" style="margin-top:10px">
+        <div class="column">
+            <h1 align="left">
+                <ul>
+                    <li>BI442</li>
+                    <li>BI444</li>
+                    <li>BI446</li>
+                    <li>BI448</li>
+                    <li>CH442</li>
+                    <li>CH444</li>
+                    <li>CH446</li>
+                    <li>CH448</li>
+                </ul>
+            </h1>
+        </div>
+        <div class="column">
+            <h1 align="left">
+                <ul>
+                    <li>EE442</li>
+                    <li>EE444</li>
+                    <li>IE405</li>
+                    <li>IE406</li>
+                    <li>JA305</li>
+                    <li>JA307</li>
+                    <li>MU360</li>
+                    <li>MU362</li>
+                </ul>
+            </h1>
+
+        </div>
+        <div class="column">
+            <h1 align="left">
+                <ul>
+                    <li>MU364</li>
+                    <li>MU370</li>
+                    <li>MU372</li>
+                    <li>MU374</li>
+                    <li>PH442</li>
+                    <li>PH444</li>
+                    <li>PH446</li>
+                    <li>PH448</li>
+                </ul>
+            </h1>
+        </div>
+    </div>
+    <div style="margin-top:10px" align="left">
+        <h1>
+            <p>
+                If one or more of these classes are in your schedule, your timetable may not be generated accurately.
+            </p>
+
+        </h1>
+    </div>
+
+
+
+
+{% endblock %}
